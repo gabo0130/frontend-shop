@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ProductService } from '../../services/product.service';
 import { Product } from '../../models/product.model';
 import { ProductListComponent } from '../../components/organisms/product-list/product-list.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [ProductListComponent],
+  imports: [ProductListComponent, HttpClientModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -16,9 +17,9 @@ export class HomeComponent implements OnInit {
   constructor(private productService: ProductService) {}
 
   ngOnInit() {
-    this.productService.getProducts().subscribe((data) => {
-      this.products = data;
-    });
+    // this.productService.getProducts().subscribe((data) => {
+    //   this.products = data;
+    // });
   }
 
   addToCart(productId: string) {
